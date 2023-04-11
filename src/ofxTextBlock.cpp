@@ -22,25 +22,26 @@
 ofxTextBlock::ofxTextBlock()
 {
 
-    scale       =   1.0f;
+	scale = 1.0f;
 
 }
 
 ofxTextBlock::~ofxTextBlock()
 {
-    //dtor
+	//dtor
 }
 
-void ofxTextBlock::init(string fontLocation, float fontSize){
+void ofxTextBlock::init(string fontLocation, float fontSize) {
 
-	defaultFont.load(fontLocation, fontSize, true, true);
+	defaultFont.loadFont(fontLocation, fontSize, true, true);
+
 	//Set up the blank space word
-    blankSpaceWord.rawWord = " ";
-    blankSpaceWord.width = defaultFont.stringWidth("x");
-    blankSpaceWord.height = defaultFont.stringHeight("i");
-    blankSpaceWord.color.r = blankSpaceWord.color.g = blankSpaceWord.color.b = 255;
-    blankSpaceWord.hasFormat = false;
-    blankSpaceWord.isBreakLine = false;
+	blankSpaceWord.rawWord = " ";
+	blankSpaceWord.width = defaultFont.stringWidth("x");
+	blankSpaceWord.height = defaultFont.stringHeight("i");
+	blankSpaceWord.color.r = blankSpaceWord.color.g = blankSpaceWord.color.b = 255;
+	blankSpaceWord.hasFormat = false;
+	blankSpaceWord.isBreakLine = false;
 
 }
 
@@ -67,7 +68,7 @@ void ofxTextBlock::setHtmlText(string _inputText) {
 			breaklineWord.width = 0;
 			words.insert(words.begin() + 1 + i, breaklineWord);
 			//add the word after break line
-			if (rawWord.substr(rawWord.find("<br\/>") + string("<br>").size()) != "") {
+			if (rawWord.substr(rawWord.find("<br>") + string("<br>").size()) != "") {
 				wordBlock tmpWord;
 				tmpWord.rawWord = rawWord.substr(rawWord.find("<br>") + string("<br>").size());
 				tmpWord.width = defaultFont.stringWidth(tmpWord.rawWord);
