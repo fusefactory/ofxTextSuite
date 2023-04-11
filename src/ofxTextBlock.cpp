@@ -56,9 +56,9 @@ void ofxTextBlock::setHtmlText(string _inputText) {
 
 	for (int i = 0; i < words.size(); i++) {
 		string rawWord = words[i].rawWord;
-		if (rawWord.find("<br\/>") != string::npos) {
+		if (rawWord.find("<br>") != string::npos) {
 			//take the word before break line
-			words[i].rawWord = words[i].rawWord.substr(0, words[i].rawWord.find("<br\/>"));
+			words[i].rawWord = words[i].rawWord.substr(0, words[i].rawWord.find("<br>"));
 			words[i].width = defaultFont.stringWidth(words[i].rawWord);
 			//add break line
 			wordBlock breaklineWord;
@@ -67,9 +67,9 @@ void ofxTextBlock::setHtmlText(string _inputText) {
 			breaklineWord.width = 0;
 			words.insert(words.begin() + 1 + i, breaklineWord);
 			//add the word after break line
-			if (rawWord.substr(rawWord.find("<br\/>") + string("<br\/>").size()) != "") {
+			if (rawWord.substr(rawWord.find("<br\/>") + string("<br>").size()) != "") {
 				wordBlock tmpWord;
-				tmpWord.rawWord = rawWord.substr(rawWord.find("<br\/>") + string("<br\/>").size());
+				tmpWord.rawWord = rawWord.substr(rawWord.find("<br>") + string("<br>").size());
 				tmpWord.width = defaultFont.stringWidth(tmpWord.rawWord);
 				tmpWord.height = defaultFont.stringHeight(tmpWord.rawWord);
 				tmpWord.color = defaultColor;
